@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <meta charset="UTF-8" />
+  <title>Profil Pengguna</title>
+  <link rel="icon" href="download.png" type="image/png" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .profil-container {
+      max-width: 600px;
+      margin: 80px auto;
+      padding: 30px;
+      border-radius: 15px;
+      background-color: #ffffff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .profil-container h2 {
+      color: #364f6b;
+    }
+    .profil-container p {
+      margin: 10px 0;
+      font-size: 18px;
+    }
+    .profil-container .btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border-radius: 20px;
+      background-color: #3f72af;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .profil-container .btn:hover {
+      background-color: #28527a;
+    }
+  </style>
+</head>
+<body>
+   <!-- 🔝 NAVIGASI -->
+   <nav>
+    <div class="wrapper">
+      <div class="logo"><a href="index.html">Belajar Programming</a></div>
+      <div class="menu">
+        <ul>
+          <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+          <li><a href="belajar.html"><i class="fas fa-book-open"></i> Belajar</a></li>
+          <li><a href="contact.html"><i class="fas fa-phone"></i> Contact</a></li>
+          <li><a href="profil.html"><i class="fas fa-user"></i> Profil</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="profil-container">
+    <h2>Profil Pengguna</h2>
+    <p><strong>Nama Pengguna:</strong> <span id="userNameDisplay"></span></p>
+    <p><strong>Email:</strong> <span id="email">Belum tersedia</span></p>
+
+    <button class="btn" onclick="logout()">Logout</button>
+  </div>
+
+  <script>
+    const username = localStorage.getItem("loggedInUser");
+    if (!username) {
+      window.location.href = "signup.html";
+    } else {
+      document.getElementById("userNameDisplay").innerText = username;
+      document.getElementById("email").textContent = localStorage.getItem("email") || "Belum tersedia";
+
+    }
+
+    function logout() {
+      localStorage.removeItem("loggedInUser");
+      window.location.href = "signup.html";
+    }
+  </script>
+</body>
+</html>
